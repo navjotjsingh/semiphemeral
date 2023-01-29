@@ -2,7 +2,7 @@ $(function () {
 
   function change_state(q, page, count, replies) {
     var new_state = { q: q, page: page, count: count, replies: replies };
-    window.location = '#' + JSON.stringify(new_state);
+    window.location = '#' + encodeURIComponent(JSON.stringify(new_state));
   }
 
   function toggle_exclude(id, excluded) {
