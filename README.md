@@ -48,6 +48,7 @@ Commands:
   excluded_export  Export tweets excluded that are excluded from deletion
   excluded_import  Import tweets excluded that are excluded from deletion
   fetch            Download all tweets/DMs
+  import           Import tweets from a Twitter data archive
   stats            Show stats about tweets in the database
   unlike           Delete old likes that aren't available through the Twitter
                    API
@@ -61,7 +62,7 @@ If you want to delete your DMs, you'll have to make sure to give your Twitter ap
 
 From the settings page you also tell semiphemeral which tweets to exclude from deletion:
 
-![Settings](/img/settings.png)
+![Settings](img/settings.png)
 
 Once you have configured semiphemeral, fetch all of the tweets from your account by running `semiphemeral fetch`. (It may take a long time if you have a lot of tweets -- when semiphemeral hits a Twitter rate limit, it just waits the shortest amount of time allowed until it can continue fetching.)
 
@@ -86,13 +87,13 @@ $ semiphemeral delete_dms --help
 Usage: semiphemeral delete_dms [OPTIONS]
 
 Options:
-  --filename TEXT  Path to direct-message.js from Twitter data downloaded from
+  --filename TEXT  Path to direct-message.js from Twitter archive downloaded from
                    https://twitter.com/settings/your_twitter_data  [required]
 
   --help           Show this message and exit.
 ```
 
-In order to get a list of all of your DMs (since the Twitter API won't give it to you), you must go to https://twitter.com/settings/your_twitter_data and download your Twitter data (note that this is different than your "Twitter archive", which doesn't include information about your DMs). Twitter will email you a link to a zip file. When you unzip it there will be many files, including a file called `direct-message.js`. Run this command, with the path to your `direct-message.js`, for example:
+In order to get a list of all of your DMs (since the Twitter API won't give it to you), you must go to https://twitter.com/settings/your_twitter_data and download your Twitter archive. Twitter will email you a link to a zip file. When you unzip it there will be many files, including a file called `direct-message.js`. Run this command, with the path to your `direct-message.js`, for example:
 
 ```sh
 semiphemeral delete_dms --filename ~/Downloads/twitter-2020-07-22/direct-message.js
@@ -125,13 +126,13 @@ $ semiphemeral unlike --help
 Usage: semiphemeral unlike [OPTIONS]
 
 Options:
-  --filename TEXT  Path to like.js from Twitter data downloaded from
+  --filename TEXT  Path to like.js from Twitter archive downloaded from
                    https://twitter.com/settings/your_twitter_data  [required]
 
   --help           Show this message and exit.
 ```
 
-In order to get a list of all of your old likes (since the Twitter API won't give it to you), you must go to https://twitter.com/settings/your_twitter_data and download your Twitter data (note that this is different than your "Twitter archive", which doesn't include information about your likes). Twitter will email you a link to a zip file. When you unzip it there will be many files, including a file called `like.js`. Run this command, with the path to your `like.js`, for example:
+In order to get a list of all of your old likes (since the Twitter API won't give it to you), you must go to https://twitter.com/settings/your_twitter_data and download your Twitter archive. Twitter will email you a link to a zip file. When you unzip it there will be many files, including a file called `like.js`. Run this command, with the path to your `like.js`, for example:
 
 ```sh
 semiphemeral unlike --filename ~/Downloads/twitter-2020-07-22/like.js
